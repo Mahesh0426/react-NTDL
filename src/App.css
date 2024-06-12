@@ -1,0 +1,8 @@
+.title {
+  background: linear-gradient(
+    90deg,
+    rgb(49, 66, 131) 0%,
+    rgba(121, 12, 116, 1) 38%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
