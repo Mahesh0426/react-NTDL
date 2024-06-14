@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTaskForm from "./AddTaskForm";
 import TaskList from "./TaskList";
 import TimeDisplay from "./TimeDisplay";
@@ -41,6 +41,18 @@ const TaskContainer = () => {
   const totalTimeWasted = unwantedTask.reduce((acc, curr) => {
     return acc + Number(curr.taskTime);
   }, 0);
+
+  // useffect for local storage
+  useEffect(() => {
+    const taskLocal = JSON.parse(localStorage.getItem("task"));
+    if (taskLocal && taskLocal.length > 0) {
+      setTaskList(taskLocal);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("task", JSON.stringify(taskList));
+  }, [taskList]);
 
   return (
     <div className="shadow-lg border p-4 rounded">
